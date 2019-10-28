@@ -3,6 +3,8 @@ const router = express.Router();
 const { check, validationResult } = require('express-validator');
 const gravatar = require('gravatar');
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const config = require('config');
 
 const User = require('../../models/User');
 
@@ -63,9 +65,22 @@ router.post(
             //save user     - update document with mongoose function save()
             await user.save();
 
-            //return jwt
+            //return jwt - so that they can use the jwt to authenticate and access protected routes
+            const payload = {
+                user: {
+                    id: user.id //id sent back by mongoose
+                }
+            };
 
-            res.send('User registered');
+            jwt.sign(
+                payload,
+                config.get('jwtSecret'),
+                { expiresIn: 360000 }, //note: change back to 3600 in production
+                (err, token) => {
+                    if (err) throw err;
+                    res.json({ token });
+                }
+            );
         } catch (err) {
             console.error(err.message);
             res.status(500).send('Server error');
