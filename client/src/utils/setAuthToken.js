@@ -1,5 +1,6 @@
 import axios from 'axios';
 
+// jwt is a stateless authentication
 // this function takes in a token as a param from local storage.
 // if there is we set the global header 'x-auth-token' with axios.
 // if not, delete from global headers
