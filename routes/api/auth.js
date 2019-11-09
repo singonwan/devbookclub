@@ -9,11 +9,11 @@ const bcrypt = require('bcryptjs');
 const User = require('../../models/User');
 
 // @route   Get api/auth
-// @desc    Test route
-// @access  Public(no tokens needed)
+// @desc    get authorized user
+// @access  Private
 router.get('/', auth, async (req, res) => {
     try {
-        const user = await User.findById(req.user.id).select('-password'); //from token which has the user object with the id
+        const user = await User.findById(req.user.id).select('-password');
         res.json(user);
     } catch (err) {
         console.error(err.message);
