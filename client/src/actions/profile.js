@@ -1,7 +1,13 @@
 import axios from 'axios';
 import { setAlert } from './alert';
 
-import { GET_PROFILE, PROFILE_ERROR, UPDATE_PROFILE } from './types';
+import {
+    GET_PROFILE,
+    PROFILE_ERROR,
+    UPDATE_PROFILE,
+    CLEAR_PROFILE,
+    DELETE_ACCOUNT
+} from './types';
 
 // Get current user's profile
 export const getCurrentProfile = () => async dispatch => {
@@ -143,5 +149,77 @@ export const addEducation = (formData, history) => async dispatch => {
                 status: err.response.status
             }
         });
+    }
+};
+
+// Delete an experience
+export const deleteExperience = expId => async dispatch => {
+    try {
+        const res = await axios.delete(`/api/profile/experience/${expId}`);
+
+        dispatch({
+            type: UPDATE_PROFILE,
+            payload: res.data
+        });
+
+        dispatch(setAlert('Experience Removed', 'success'));
+    } catch (err) {
+        dispatch({
+            type: PROFILE_ERROR,
+            payload: {
+                msg: err.response.statusText,
+                status: err.response.status
+            }
+        });
+    }
+};
+
+// Delete an education
+export const deleteEducation = eduId => async dispatch => {
+    try {
+        const res = await axios.delete(`/api/profile/education/${eduId}`);
+
+        dispatch({
+            type: UPDATE_PROFILE,
+            payload: res.data
+        });
+
+        dispatch(setAlert('Education Removed', 'success'));
+    } catch (err) {
+        dispatch({
+            type: PROFILE_ERROR,
+            payload: {
+                msg: err.response.statusText,
+                status: err.response.status
+            }
+        });
+    }
+};
+
+// Delete account and profile
+export const deleteAccount = () => async dispatch => {
+    if (
+        window.confirm(
+            'Are you sure you want to delete your account? This can NOT be undone'
+        )
+    ) {
+        try {
+            const res = await axios.delete('/api/profile'); //deletes profile route
+
+            dispatch({ type: CLEAR_PROFILE });
+            dispatch({ type: DELETE_ACCOUNT });
+
+            dispatch(
+                setAlert('Your account has ben permanently deleted', 'success')
+            );
+        } catch (err) {
+            dispatch({
+                type: PROFILE_ERROR,
+                payload: {
+                    msg: err.response.statusText,
+                    status: err.response.status
+                }
+            });
+        }
     }
 };
