@@ -9,7 +9,7 @@ const Profiles = ({ profile: { profiles, loading }, getProfiles }) => {
     //kinda like component did mount
     useEffect(() => {
         getProfiles();
-    }, []);
+    }, [getProfiles]);
 
     return (
         <Fragment>

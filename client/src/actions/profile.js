@@ -39,7 +39,7 @@ export const getProfiles = () => async dispatch => {
 
         dispatch({
             type: GET_PROFILES,
-            payload: res.data //route returns current user's profile
+            payload: res.data
         });
     } catch (err) {
         dispatch({
