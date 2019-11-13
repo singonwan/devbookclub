@@ -49,7 +49,7 @@ const EditProfile = ({
             instagram:
                 loading || !profile.social ? '' : profile.social.instagram
         });
-    }, [loading]); //when its loading this runs.. when i didnt put an arg, it just went in an infinite loop
+    }, [loading, getCurrentProfile]); //when its loading this runs.. when i didnt put an arg, it just went in an infinite loop
 
     const {
         company,
