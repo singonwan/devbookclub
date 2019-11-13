@@ -121,7 +121,7 @@ router.post(
 // @access  Public
 router.get('/', async (req, res) => {
     try {
-        //populate the user field within the profile field
+        //populate the user field within the profile field with name and avatar
         const profiles = await Profile.find().populate('user', [
             'name',
             'avatar'
