@@ -12,7 +12,7 @@ const Landing = ({ isAuthenticated }) => {
         <section className="landing">
             <div className="dark-overlay">
                 <div className="landing-inner">
-                    <h1 className="x-large">Developer Connector</h1>
+                    <h1 className="x-large">Developer BookClub</h1>
                     <p className="lead">
                         Create a developer profile/portfolio, and share your
                         favourite books with other developers
