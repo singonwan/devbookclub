@@ -1,0 +1,6 @@
+{
+    "mongoURI": "mongodb+srv://gwan123:gwan123@devbookclubdb-vfrrb.mongodb.net/test?retryWrites=true&w=majority",
+    "jwtSecret": "gwansecrettoken",
+    "githubClientId": "57d186e1c27e84c09e66",
+    "githubClientSecret": "c6f3b9c0457be0d601d89d9a299b77a190ebd53d"
+}
