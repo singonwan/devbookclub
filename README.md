@@ -15,4 +15,6 @@ https://dry-bastion-68781.herokuapp.com/
 ## Dependencies
 backend dependencies: bcryptjs, mongoose, config, express, express-validator, gravatar, jsonwebtoken, request (for interacting with github API)
 
-backend devdependencies: nodemon, concurrently.
+backend dev dependencies: nodemon, concurrently.
+
+front end dependencies: axios, moment, react, react-dom, react-moment, react-redux, react-router-dom, react-scripts, redux, redux-devtools-extension, redux-thunk, uuid
