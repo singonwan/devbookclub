@@ -5,7 +5,7 @@ a book club for developers
 * A full stack social network for developers to share their reading experiences. 
 * Built using MERN stack which consists of React, Redux, MongoDB, Express.js, Node.js
 * Created an extensive backend API with express
-* utilizes JWT authentication, React Hooks, async/await and other modern practices.
+* utilizes JWT authentication, React Hooks (useState, useEffect), async/await and other modern practices.
 * Utilizes Redux as a state manager
 * Deployed to heroku 
 
